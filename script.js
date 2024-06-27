@@ -8,16 +8,26 @@ const removeSpecialCharacters = (str) => {
     return str.replace(regex, '');
 }
 
+const isPalindrome = (word) => {
+    if(word.length === 1 || word.length === 0){
+        return true;
+    } else if (word === word.split("").reverse().join("")) {
+        return true;
+    }
+    return false;
+}
+
+
 const checkPalindrome = () => {
     if(textInput.value === '') {
-        alert("Error");
+        alert("Please input a value");
     }
     const cleanedText = removeSpecialCharacters(textInput.value).toLowerCase();
-    result.innerText = cleanedText;
-    // get inputted text
-    // check if blank, and error
-    // remove symbols and blank spaces
-    // check single letter => Palindrome
+    if (isPalindrome(cleanedText)) {
+        result.innerText = `${textInput.value} is a palindrome`; 
+    } else {
+        result.innerText = `${textInput.value} is not a palindrome`; 
+    }
 
 }
 
